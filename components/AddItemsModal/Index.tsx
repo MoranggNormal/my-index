@@ -1,7 +1,8 @@
-import styles from "./Index.module.scss";
-import Input from "../Input/Index";
 import React, { FC, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import Input from "../Input/Index";
+import noImage from "../../assets/images/interrogation-mark.png"
+import styles from "./Index.module.scss";
 
 interface item {
   photo: string;
@@ -17,6 +18,18 @@ const AddItemsModal = ({ Modal }: any) => {
   const [text, setText] = useState("");
 
   const addMenuItem = () => {
+
+    if (photo.length < 1){
+      return setStoredItems((prevState) => [
+        ...prevState,
+        {
+          photo: noImage.src,
+          alt: alt,
+          text: text,
+        },
+      ]);
+    }
+
     setStoredItems((prevState) => [
       ...prevState,
       {

@@ -12,6 +12,8 @@
   justify-content: center;
   gap: 1em;
   margin-top: 5em;
+  overflow-x: auto;
+
 
   ul {
     display: flex;
@@ -45,6 +47,8 @@
         }
 
       }
+
+
 
       .clear {
         background-color: #ee4242;
@@ -83,6 +87,7 @@
         }
       }
     }
+
   }
 
   @include override;

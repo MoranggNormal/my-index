@@ -6,8 +6,9 @@ type ButtonProps = {
     alt: string,
     link: string,
     type: "submit" | "button" | "reset" | undefined,
-    onClick: () => void,
+    onClick?: () => void,
     children?: any,
+    style?: any,
 
 }
 
