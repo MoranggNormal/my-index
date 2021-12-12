@@ -51,3 +51,11 @@ button, input{
 li{
   list-style: none;
 }
+
+#__next{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}

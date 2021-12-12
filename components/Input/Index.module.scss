@@ -1,4 +1,4 @@
-.input{
+.input {
   background-color: rgba(101, 29, 210, 0.66);
   border-radius: 0.2em;
 
@@ -10,11 +10,12 @@
   transition: 0.2s;
 
 
-  &::placeholder{
+  &::placeholder {
     color: rgba(247, 247, 247, 0.79);
   }
 
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     box-shadow: 0 0 14px 2px rgba(232, 94, 232, 0.22);
 
 

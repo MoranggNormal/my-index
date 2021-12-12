@@ -23,7 +23,7 @@ const MenuButton = (props: ButtonProps) => {
                 <Link href={props.link}>
                     <a>
                         <img
-                            alt="Close"
+                            alt={props.alt}
                             src={props.photo}
                             width={36}
                             height={36}
@@ -32,7 +32,7 @@ const MenuButton = (props: ButtonProps) => {
                 </Link>
                 :
                 <img
-                    alt="Close"
+                    alt={props.alt}
                     src={props.photo}
                     width={36}
                     height={36}

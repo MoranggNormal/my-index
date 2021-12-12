@@ -1,7 +1,16 @@
-.addMore{
+.addMore {
   display: grid;
   place-items: center;
   padding: 0.1em;
   background-color: transparent;
   cursor: pointer;
+  transition: 0.1s;
+
+
+
+  &:hover{
+    transform: scale(1.1);
+    filter: brightness(0.9);
+  }
+  
 }
