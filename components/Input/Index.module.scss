@@ -1,0 +1,22 @@
+.input{
+  background-color: rgba(101, 29, 210, 0.66);
+  border-radius: 0.2em;
+
+  margin: 0.4em 0;
+  font-size: 1em;
+  padding: 0.3em 0.6em;
+  max-width: 100%;
+  box-shadow: 0 0 14px 1px rgba(232, 94, 232, 0.13);
+  transition: 0.2s;
+
+
+  &::placeholder{
+    color: rgba(247, 247, 247, 0.79);
+  }
+
+  &:hover, &:focus{
+    box-shadow: 0 0 14px 2px rgba(232, 94, 232, 0.22);
+
+
+  }
+}

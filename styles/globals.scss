@@ -1,7 +1,53 @@
-*.
+*,
 *::before,
 *::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #f7f7f7;
+}
+
+
+html{
+  background-image: url('https://cdn.pixabay.com/photo/2020/09/10/03/02/mountains-5559099_960_720.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-size: 14px;
+}
+
+body{
+  width: 100vw;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1280%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsLinearGradient1281)'%3e%3c/rect%3e%3cpath d='M1440 0L909.62 0L1440 202.32z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M909.62 0L1440 202.32L1440 362.26L807.26 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M807.26 0L1440 362.26L1440 466.81L536.66 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M536.66 0L1440 466.81L1440 525.26L351.21999999999997 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L429.31 560L0 482.94z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 482.94L429.31 560L843.1600000000001 560L0 254.89z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 254.89L843.1600000000001 560L1189 560L0 137.09999999999997z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 137.09999999999997L1189 560L1246.55 560L0 72.23999999999997z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1280'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='139.29%25' x2='84.72%25' y2='-39.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1281'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(195%2c 0%2c 223%2c 0.1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+  position: relative;
+}
+
+body::after{
+  content: '';
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(3.3px);
+  -webkit-backdrop-filter: blur(3.3px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0px 0px 29px 1px rgba(213, 35, 97, 0.35);;
+  box-shadow: inset 0px 0px 74px 2px rgba(213, 35, 97, 0.35);
+}
+
+button, input{
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+li{
+  list-style: none;
 }
