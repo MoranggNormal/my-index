@@ -1,7 +1,7 @@
 @import "styles/overrider";
 @import "styles/mediaQueries";
 
-.header {
+.headerItems {
   width: 80%;
   padding: 0.2em 0;
   background: #e1e1e1d1;
@@ -141,5 +141,14 @@
 
   }
 
+}
+
+.headerTime, .headerItems{
   @include override;
+
+}
+
+
+.headerTime{
+  margin-top: 2em;
 }

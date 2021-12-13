@@ -12,6 +12,7 @@ import trash from "../../assets/images/1904654_cancel_close_cross_delete_reject_
 import Add from "../../assets/images/299068_add_sign_icon.svg";
 /* STYLES */
 import styles from "./Index.module.scss";
+import useDate from "../../hooks/useDate";
 
 interface item {
     photo: string;
@@ -23,6 +24,10 @@ const Header = () => {
     const getStoredItems = useReadLocalStorage<item[]>("items");
     const [, setStoredItems] = useLocalStorage<item[] | undefined>("items", []);
     const [modal, setModal] = useState(false);
+
+    const time = useDate();
+
+
 
     const modalBox = () => {
         return setModal((prevState) => !prevState);
@@ -37,7 +42,12 @@ const Header = () => {
 
     return (
         <>
-            <header className={styles.header}>
+
+        <header className={styles.headerTime}>
+            {time}
+        </header>
+
+            <div className={styles.headerItems}>
                 <div className={styles.addButton}>
                 <MenuButton
                     onClick={() => modalBox()}
@@ -48,6 +58,7 @@ const Header = () => {
                     <div className={styles.itemInfo}><p>Add new item</p></div>
                 </MenuButton>
                 </div>
+
                 <AddItemsModal Modal={modal}/>
 
                 <ul>
@@ -70,7 +81,7 @@ const Header = () => {
                             );
                         })}
                 </ul>
-            </header>
+            </div>
         </>
     );
 };
