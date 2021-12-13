@@ -13,6 +13,8 @@ interface item {
 const AddItemsModal = ({ Modal }: any) => {
   const [, setStoredItems] = useLocalStorage<item[]>("items", []);
 
+  const [manyCharacters, setManyCharacters] = useState<boolean>(false);
+
   const [photo, setPhoto] = useState("");
   const [alt, setAlt] = useState("");
   const [text, setText] = useState("");
@@ -63,6 +65,7 @@ const AddItemsModal = ({ Modal }: any) => {
             <Input
               value={alt}
               name={alt}
+              maxLength={15}
               onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
                 setAlt(e.target.value)
               }

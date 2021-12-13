@@ -4,11 +4,12 @@ import styles from './Index.module.scss'
 type ButtonProps = {
     photo: string,
     alt: string,
-    link: string,
+    link?: string,
     type: "submit" | "button" | "reset" | undefined,
     onClick?: () => void,
     children?: any,
     style?: any,
+    id?: any,
 
 }
 

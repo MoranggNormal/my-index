@@ -38,14 +38,16 @@ const Header = () => {
     return (
         <>
             <header className={styles.header}>
+                <div className={styles.addButton}>
                 <MenuButton
                     onClick={() => modalBox()}
                     photo={Add.src}
-                    alt={"haha"}
-                    link={""}
+                    alt={"Add new menu item"}
                     type={"button"}
-                />
-
+                >
+                    <div className={styles.itemInfo}><p>Add new item</p></div>
+                </MenuButton>
+                </div>
                 <AddItemsModal Modal={modal}/>
 
                 <ul>
@@ -63,6 +65,7 @@ const Header = () => {
                                     <div onClick={() => removeItem(index)} className={styles.clear}>
                                         <img src={trash.src} alt={e.alt}/>
                                     </div>
+                                    <div className={styles.itemInfo}><p>{e.alt}</p></div>
                                 </li>
                             );
                         })}
