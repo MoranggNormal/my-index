@@ -13,7 +13,7 @@ interface item {
 const AddItemsModal = ({ Modal }: any) => {
   const [, setStoredItems] = useLocalStorage<item[]>("items", []);
 
-  const [manyCharacters, setManyCharacters] = useState<boolean>(false);
+  const [success, setSuccess] = useState(false);
 
   const [photo, setPhoto] = useState("");
   const [alt, setAlt] = useState("");
@@ -21,36 +21,30 @@ const AddItemsModal = ({ Modal }: any) => {
 
   const addMenuItem = () => {
 
-    if (photo.length < 1){
-      return setStoredItems((prevState) => [
-        ...prevState,
-        {
-          photo: noImage.src,
-          alt: alt,
-          text: text,
-        },
-      ]);
-    }
 
     setStoredItems((prevState) => [
       ...prevState,
       {
-        photo: photo,
-        alt: alt,
+        photo: photo || noImage.src,
+        alt: alt || "Undefined",
         text: text,
       },
     ]);
 
+    setSuccess(prevState => !prevState)
+    setTimeout( () => setSuccess(prevState => !prevState) , 2000)
+
     setPhoto("");
     setAlt("");
     setText("");
+
   };
 
   return (
     <>
       <section
         className={styles.modal}
-        style={Modal ? { top: "50%" } : { top: "-500%" }}
+        style={Modal ? { top: "50%" } : { top: "-200%" }}
       >
         <article>
           <form>
@@ -85,7 +79,12 @@ const AddItemsModal = ({ Modal }: any) => {
             </button>
           </form>
         </article>
+
       </section>
+       <div className={styles.success}
+            style={success ? {top: '-90%'} : {top: '-400%'}}
+      >Added new item!</div>
+
     </>
   );
 };
