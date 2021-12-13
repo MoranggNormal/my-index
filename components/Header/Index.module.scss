@@ -4,7 +4,8 @@
 .header {
   width: 80%;
   padding: 0.2em 0;
-  background: rgba(56, 8, 79, 0.08);
+  background: #e1e1e1d1;
+  border-radius: 2em;
   -webkit-box-shadow: 0 0 25px 9px rgba(207, 207, 207, 0.05);
   box-shadow: 0 0 25px 9px rgba(207, 207, 207, 0.05);
   display: flex;
@@ -37,7 +38,6 @@
           width: 100%;
           height: 100%;
           border-radius: 50%;
-
         }
 
         &:hover, &:focus {
@@ -46,8 +46,6 @@
         }
 
       }
-
-
 
       .clear {
         background-color: #ee4242;
@@ -100,7 +98,6 @@
         }
 
       }
-
 
       &:hover {
         .clear, .itemInfo {
