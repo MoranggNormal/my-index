@@ -73,7 +73,7 @@ const Aside = () => {
                   lastUpdate={lastUpdate}
                   priceBRL={priceBRL}
                   lowPriceBRL={lowPriceBRL}
-                  highPriceBRL={highPriceUSD}
+                  highPriceBRL={highPriceBRL}
                   priceUSD={priceUSD}
                   lowPriceUSD={lowPriceUSD}
                   highPriceUSD={highPriceUSD}
