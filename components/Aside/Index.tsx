@@ -29,6 +29,7 @@ const getBTCBRLHistoryInMinutes =
 
 const Aside = () => {
   const [price, setPrice] = useState<any>(null);
+  const lastUpdate = new Date().toTimeString().slice(0,5);
 
   const getBTCUSDHistory = useFetch<any>(getBTCUSDHistoryInMinutes);
   const getBTCBRLHistory = useFetch<any>(getBTCBRLHistoryInMinutes);
@@ -56,7 +57,6 @@ const Aside = () => {
     "#210ebc",
     "#219dbc2a"
   );
-
   const dataETHUSD = cryptoData(
     pricesETHUSD,
     "USD",
@@ -77,7 +77,7 @@ const Aside = () => {
     {
       image: bitcoin.src,
       currencyName: "BITCOIN",
-      lastUpdate: price?.DISPLAY.BTC.BRL.LASTUPDATE,
+      lastUpdate: lastUpdate,
       priceBRL: price?.DISPLAY.BTC.BRL.PRICE,
       priceUSD: price?.DISPLAY.BTC.USD.PRICE,
       lowPriceBRL: price?.DISPLAY.BTC.BRL.LOW24HOUR,
@@ -90,7 +90,7 @@ const Aside = () => {
     {
       image: ethereum.src,
       currencyName: "ETHEREUM",
-      lastUpdate: price?.DISPLAY.ETH.BRL.LASTUPDATE,
+      lastUpdate: lastUpdate,
       priceBRL: price?.DISPLAY.ETH.BRL.PRICE,
       priceUSD: price?.DISPLAY.ETH.USD.PRICE,
       lowPriceBRL: price?.DISPLAY.ETH.BRL.LOW24HOUR,
