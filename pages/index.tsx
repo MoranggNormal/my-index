@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Aside from '../components/Aside/Index'
 import Header from '../components/Header/Index'
 
+import Chart from '../components/Chart/Index'
+
 const Home: NextPage = () => {
   return (
     <>

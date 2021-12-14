@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Chart from "../Chart/Index";
 
 import styles from "./Index.module.scss";
 
@@ -14,6 +15,8 @@ interface Props {
   lowPriceUSD: string;
   highPriceBRL: string;
   highPriceUSD: string;
+  graphDataUSD: any;
+  graphDataBRL: any;
 }
 
 const Button: React.FC<Props> = ({
@@ -27,6 +30,8 @@ const Button: React.FC<Props> = ({
   lowPriceUSD,
   highPriceBRL,
   highPriceUSD,
+  graphDataUSD,
+  graphDataBRL
 }) => {
   return (
     <>
@@ -35,6 +40,7 @@ const Button: React.FC<Props> = ({
           <Image src={image} width="32" height="32"></Image>
         </button>
         <div className={styles.info}>
+          <div className={styles.text}>
           <h3>{currencyName}</h3>
           <hr />
           <p>
@@ -59,6 +65,11 @@ const Button: React.FC<Props> = ({
             {' '} - {' '}
             <small>{highPriceUSD}</small>
           </p>
+          </div>
+          
+          
+          <Chart data={graphDataUSD}></Chart>
+          <Chart data={graphDataBRL}></Chart>
         </div>
       </div>
     </>

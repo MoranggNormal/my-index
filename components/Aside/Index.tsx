@@ -10,8 +10,15 @@ import axios from "axios";
 const baseURL =
   "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH&tsyms=USD,BRL";
 
+
+
+
+// COMPONENT
+
 const Aside = () => {
   const [price, setPrice] = useState<any>(null);
+  const [graphTimesUSD, setgraphTimesUSD] = useState<any>(null);
+  const [graphTimesBRL, setgraphTimesBRL] = useState<any>(null);
 
   const btc = [
     {
@@ -38,6 +45,51 @@ const Aside = () => {
     },
   ];
 
+  const pricesUSD = graphTimesUSD?.map((obj: any) => obj.high )
+  const pricesBRL = graphTimesBRL?.map((obj: any) => obj.high )
+
+  
+const dataUSD = {
+  labels: pricesUSD,
+  datasets: [
+    {
+      label: "USD",
+      data: pricesUSD,
+      fill: true,
+      borderColor: "#fb8500",
+      backgroundColor: '#fb86001f',
+      borderJoinStyle: "round",
+      borderCapStyle: "round",
+      borderWidth: 3,
+      pointRadius: 0,
+      pointHitRadius: 10,
+      lineTension: 0.2,
+    },
+  ]
+};
+
+const dataBRL = {
+  labels: pricesBRL,
+  datasets: [
+    {
+      label: "BRL",
+      data: pricesBRL,
+      fill: true,
+      borderColor: "#219ebc",
+      backgroundColor: '#219dbc2a',
+      borderJoinStyle: "round",
+      borderCapStyle: "round",
+      borderWidth: 3,
+      pointRadius: 0,
+      pointHitRadius: 10,
+      lineTension: 0.2,
+    },
+
+
+  ]
+};
+
+
   useEffect(() => {
     axios
       .get(baseURL)
@@ -49,25 +101,57 @@ const Aside = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get('https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=60')
+      .then((response) => {
+        
+        setgraphTimesUSD(response.data.Data.Data)
+      })
+      .catch((e) => {
+        console.log(e);
+        
+      })
+  }, [])
+
+  useEffect(() => {
+    axios
+      .get('https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=BRL&limit=60')
+      .then((response) => {
+        
+        setgraphTimesBRL(response.data.Data.Data)
+      })
+      .catch((e) => {
+        console.log(e);
+        
+      })
+  }, [])
+
+  
+  
+
   return (
     <>
       <aside className={styles.aside}>
         {price &&
           btc.map(
-            ({
-              image,
-              currencyName,
-              lastUpdate,
-              priceBRL,
-              priceUSD,
-              lowPriceBRL,
-              lowPriceUSD,
-              highPriceBRL,
-              highPriceUSD,
-            }, index) => {
+            (
+              {
+                image,
+                currencyName,
+                lastUpdate,
+                priceBRL,
+                priceUSD,
+                lowPriceBRL,
+                lowPriceUSD,
+                highPriceBRL,
+                highPriceUSD,
+              },
+              index
+            ) => {
               return (
                 <Button
-                key={index}
+                  key={index}
                   image={image}
                   currencyName={currencyName}
                   lastUpdate={lastUpdate}
@@ -77,10 +161,13 @@ const Aside = () => {
                   priceUSD={priceUSD}
                   lowPriceUSD={lowPriceUSD}
                   highPriceUSD={highPriceUSD}
-                ></Button>
+                  graphDataUSD={dataUSD}
+                  graphDataBRL={dataBRL}
+                  ></Button>
               );
             }
           )}
+
       </aside>
     </>
   );
