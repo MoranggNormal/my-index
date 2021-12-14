@@ -64,9 +64,10 @@ const Aside = () => {
               lowPriceUSD,
               highPriceBRL,
               highPriceUSD,
-            }) => {
+            }, index) => {
               return (
                 <Button
+                key={index}
                   image={image}
                   currencyName={currencyName}
                   lastUpdate={lastUpdate}
