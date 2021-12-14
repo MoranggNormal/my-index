@@ -24,12 +24,21 @@
         border-radius: 0.2em;
         border-left: 4px solid #00A86B;
 
+        hr{
+            margin-bottom: 1em;
+        }
+
+        p{
+            margin: 0.2em 0
+        }
+
         small{
             color: rgb(43, 43, 43);
             background-color: white;
             padding: 0.1em 0.3em;
             border-radius: 0.2em;
         }
+        
 
         &::before{
             content: '';
