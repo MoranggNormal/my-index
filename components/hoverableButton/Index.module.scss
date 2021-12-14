@@ -1,0 +1,47 @@
+.button{
+    position: relative;
+    margin: 0.3em 0;
+
+
+    button{
+        cursor: pointer;
+        
+        &:hover{
+            transform: scale(1.1);
+            filter: brightness(0.9);
+        }
+    }
+
+    
+    .info{
+        position: absolute;
+        left: 500%;
+        top: -100vh;
+        width: 15em;
+        transform: translate(-50%, -50%);
+        background-color: rgb(43, 43, 43);
+        padding: 0.5em 0.7em;
+        border-radius: 0.2em;
+
+        &::before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(-50%, -50%);
+            width: 1em;
+            height: 0.6em;
+            border-radius: 9999px;
+            background-color: rgb(43, 43, 43);
+
+        }
+
+    }
+
+
+   &:hover{
+       .info{
+           top: 50%;
+       }
+   }
+}

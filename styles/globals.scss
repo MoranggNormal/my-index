@@ -35,11 +35,9 @@ body::after{
   position: absolute;
   top: 0;
   left: 0;
-  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(3.3px);
+  backdrop-filter: blur(2.1px);
   -webkit-backdrop-filter: blur(3.3px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 0px 0px 29px 1px rgba(213, 35, 97, 0.35);;
   box-shadow: inset 0px 0px 74px 2px rgba(213, 35, 97, 0.35);
 }

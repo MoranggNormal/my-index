@@ -7,7 +7,7 @@ type ButtonProps = {
     link?: string,
     type: "submit" | "button" | "reset" | undefined,
     onClick?: () => void,
-    children?: any,
+    children?: React.ReactNode,
     style?: any,
     id?: any,
 
