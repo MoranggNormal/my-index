@@ -15,8 +15,8 @@ interface Props {
   lowPriceUSD: string;
   highPriceBRL: string;
   highPriceUSD: string;
-  graphDataUSD: any;
-  graphDataBRL: any;
+  dataBTCUSD: any;
+  dataBTCBRL: any;
 }
 
 const Button: React.FC<Props> = ({
@@ -30,8 +30,8 @@ const Button: React.FC<Props> = ({
   lowPriceUSD,
   highPriceBRL,
   highPriceUSD,
-  graphDataUSD,
-  graphDataBRL
+  dataBTCUSD,
+  dataBTCBRL
 }) => {
   return (
     <>
@@ -68,8 +68,8 @@ const Button: React.FC<Props> = ({
           </div>
           
           
-          <Chart data={graphDataUSD}></Chart>
-          <Chart data={graphDataBRL}></Chart>
+          <Chart data={dataBTCUSD}></Chart>
+          <Chart data={dataBTCBRL}></Chart>
         </div>
       </div>
     </>
