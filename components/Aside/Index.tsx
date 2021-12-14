@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import cryptoData from "../../utils/cryptoData";
+import convertEpoche from "../../utils/convertEpoche"
+
 
 import Button from "../hoverableButton/Index";
 
@@ -16,14 +18,14 @@ const baseURL =
   "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH&tsyms=USD,BRL";
 // BTC //
 const getBTCUSDHistoryInMinutes =
-  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=10";
+  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=60";
 const getBTCBRLHistoryInMinutes =
-  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=BRL&limit=10";
+  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=BRL&limit=60";
 // ETH //
   const getETHUSDHistoryInMinutes =
-  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=USD&limit=10";
+  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=USD&limit=60";
   const getETHBRLHistoryInMinutes =
-  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=BRL&limit=10";
+  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=BRL&limit=60";
 
 // COMPONENT
 
@@ -31,46 +33,58 @@ const Aside = () => {
   const [price, setPrice] = useState<any>(null);
   const lastUpdate = new Date().toTimeString().slice(0,5);
 
+  // FETCH API - PRICE AND TIME HISTORY
   const getBTCUSDHistory = useFetch<any>(getBTCUSDHistoryInMinutes);
   const getBTCBRLHistory = useFetch<any>(getBTCBRLHistoryInMinutes);
 
   const getETHUSDHistory = useFetch<any>(getETHUSDHistoryInMinutes);
   const getETHBRLHistory = useFetch<any>(getETHBRLHistoryInMinutes);
 
+  // GET PRICES
   const pricesBTCUSD = getBTCUSDHistory?.data?.Data.Data.map((obj: any) => obj.high);
   const pricesBTCBRL = getBTCBRLHistory?.data?.Data.Data.map((obj: any) => obj.high);
 
   const pricesETHUSD = getETHUSDHistory?.data?.Data.Data.map((obj: any) => obj.high);
   const pricesETHBRL = getETHBRLHistory?.data?.Data.Data.map((obj: any) => obj.high);
+  
+  
+  // CONVERT UNIX TIMESTAMP TO CURRENT DATE
+  const timesBTCBRL = getBTCBRLHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
+  const timesBTCUSD = getBTCUSDHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
 
+  const timesETHUSD = getETHUSDHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
+  const timesETHBRL = getETHBRLHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
+
+  // GRAPH PATTERN
   const dataBTCUSD = cryptoData(
-    pricesBTCUSD,
+    timesBTCUSD,
     "USD",
     pricesBTCUSD,
     "#fb8500",
     "#fb86001f"
   );
   const dataBTCBRL = cryptoData(
-    pricesBTCBRL,
+    timesBTCBRL,
     "BRL",
     pricesBTCBRL,
     "#210ebc",
     "#219dbc2a"
   );
   const dataETHUSD = cryptoData(
-    pricesETHUSD,
+    timesETHUSD,
     "USD",
     pricesETHUSD,
     "#fb8500",
     "#fb86001f"
   );
   const dataETHBRL = cryptoData(
-    pricesETHBRL,
+    timesETHBRL,
     "BRL",
     pricesETHBRL,
     "#210ebc",
     "#219dbc2a"
   );
+
 
 
   const cryptoPrices = [
@@ -112,6 +126,7 @@ const Aside = () => {
         console.log(e);
       });
   }, []);
+
 
   return (
     <>
