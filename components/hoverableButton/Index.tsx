@@ -49,21 +49,21 @@ const Button: React.FC<Props> = ({
           </p>
           <p>
           Price: {' '}
-            <small>{priceBRL}</small>
-            {' '} - {' '}
             <small>{priceUSD}</small>
+            {' '} - {' '}
+            <small>{priceBRL}</small>
           </p>
           <p>
           Lowest price on 24h: {' '} 
-            <small>{lowPriceBRL}</small>
-            {' '} - {' '}
             <small>{lowPriceUSD}</small>
+            {' '} - {' '}
+            <small>{lowPriceBRL}</small>
           </p>
           <p>
           Highest price on 24h: {' '}
-            <small>{highPriceBRL}</small>
-            {' '} - {' '}
             <small>{highPriceUSD}</small>
+            {' '} - {' '}
+            <small>{highPriceBRL}</small>
           </p>
           </div>
           
