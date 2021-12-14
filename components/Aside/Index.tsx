@@ -58,33 +58,34 @@ const Aside = () => {
   // GRAPH PATTERN
   const dataBTCUSD = cryptoData(
     timesBTCUSD,
-    "USD",
+    `Change per hour: ${price?.DISPLAY.BTC.USD.CHANGEPCTHOUR}%`,
     pricesBTCUSD,
     "#fb8500",
     "#fb86001f"
   );
   const dataBTCBRL = cryptoData(
     timesBTCBRL,
-    "BRL",
+    `Change per hour: ${price?.DISPLAY.BTC.BRL.CHANGEPCTHOUR}%`,
     pricesBTCBRL,
     "#210ebc",
     "#219dbc2a"
   );
   const dataETHUSD = cryptoData(
     timesETHUSD,
-    "USD",
+    `Change per hour: ${price?.DISPLAY.ETH.USD.CHANGEPCTHOUR}%`,
     pricesETHUSD,
     "#fb8500",
     "#fb86001f"
   );
   const dataETHBRL = cryptoData(
     timesETHBRL,
-    "BRL",
+    `Change per hour: ${price?.DISPLAY.ETH.BRL.CHANGEPCTHOUR}%`,
     pricesETHBRL,
     "#210ebc",
     "#219dbc2a"
   );
 
+  
 
 
   const cryptoPrices = [
