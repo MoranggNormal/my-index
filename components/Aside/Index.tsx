@@ -49,11 +49,11 @@ const Aside = () => {
   
   
   // CONVERT UNIX TIMESTAMP TO CURRENT DATE
-  const timesBTCBRL = getBTCBRLHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
-  const timesBTCUSD = getBTCUSDHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
+  const timesBTCBRL = getBTCBRLHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
+  const timesBTCUSD = getBTCUSDHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
 
-  const timesETHUSD = getETHUSDHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
-  const timesETHBRL = getETHBRLHistory?.data?.Data.Data.map((obj: any) => new Date(obj.time * 1000).toLocaleTimeString());
+  const timesETHUSD = getETHUSDHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
+  const timesETHBRL = getETHBRLHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
 
   // GRAPH PATTERN
   const dataBTCUSD = cryptoData(
@@ -85,9 +85,8 @@ const Aside = () => {
     "#219dbc2a"
   );
 
-  
 
-
+  // CRYPTO DATA
   const cryptoPrices = [
     {
       image: bitcoin.src,

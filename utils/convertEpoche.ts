@@ -1,11 +1,13 @@
+/*
+*   THIS FUNCTION AIMS TO CONVERT UNIX TIME TO READABLE DATE
+*   EX : 1639525085
+*   OUTPUT: 23:38:05
+*/
+
 export default (unix_timestamp: any) => {
 
-    const newDate = new Date(unix_timestamp * 1000);
+    const readableDate = new Date(unix_timestamp * 1000);
 
-    const hours = newDate.getHours();
-    const minutes = `0${newDate.getMinutes()}`
-    const seconds = `0${newDate.getMinutes()}`
-
-    return `${hours}:${minutes.substring(-2)}:${seconds.substring(-2)}`
+    return `${readableDate.toTimeString()}`
 
 }
