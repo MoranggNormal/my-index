@@ -15,17 +15,19 @@ import axios from "axios";
 // API's
 
 const baseURL =
-  "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH&tsyms=USD,BRL";
+  "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC&tsyms=USD,BRL";
 // BTC //
 const getBTCUSDHistoryInMinutes =
   "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=60";
-const getBTCBRLHistoryInMinutes =
+const getBTCBRLHistoryInMinutes = 
   "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=BRL&limit=60";
-// ETH //
-  const getETHUSDHistoryInMinutes =
-  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=USD&limit=60";
-  const getETHBRLHistoryInMinutes =
-  "https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=BRL&limit=60";
+
+
+// GET TOP 5 CRYPTO MARKET CAP //
+const getTopFive = (currency: string) => {
+  return `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=5&tsym=${currency}`; 
+}
+
 
 // COMPONENT
 
@@ -37,28 +39,25 @@ const Aside = () => {
   const getBTCUSDHistory = useFetch<any>(getBTCUSDHistoryInMinutes);
   const getBTCBRLHistory = useFetch<any>(getBTCBRLHistoryInMinutes);
 
-  const getETHUSDHistory = useFetch<any>(getETHUSDHistoryInMinutes);
-  const getETHBRLHistory = useFetch<any>(getETHBRLHistoryInMinutes);
+
+  const getTopFiveUSD = useFetch<any>(getTopFive("USD"))
+  const getTopFiveBRL = useFetch<any>(getTopFive("BRL"))
 
   // GET PRICES
   const pricesBTCUSD = getBTCUSDHistory?.data?.Data.Data.map((obj: any) => obj.high);
   const pricesBTCBRL = getBTCBRLHistory?.data?.Data.Data.map((obj: any) => obj.high);
 
-  const pricesETHUSD = getETHUSDHistory?.data?.Data.Data.map((obj: any) => obj.high);
-  const pricesETHBRL = getETHBRLHistory?.data?.Data.Data.map((obj: any) => obj.high);
   
   
   // CONVERT UNIX TIMESTAMP TO CURRENT DATE
   const timesBTCBRL = getBTCBRLHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
   const timesBTCUSD = getBTCUSDHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
 
-  const timesETHUSD = getETHUSDHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
-  const timesETHBRL = getETHBRLHistory?.data?.Data.Data.map((obj: any) => convertEpoche(obj.time));
 
   // GRAPH PATTERN
   const dataBTCUSD = cryptoData(
     timesBTCUSD,
-    `Change per hour: ${price?.DISPLAY.BTC.USD.CHANGEPCTHOUR}%`,
+    `Change per hour: ${getTopFiveUSD.data?.Data[0].DISPLAY.USD.CHANGEHOUR}%`,
     pricesBTCUSD,
     "#fb8500",
     "#fb86001f"
@@ -70,50 +69,77 @@ const Aside = () => {
     "#210ebc",
     "#219dbc2a"
   );
-  const dataETHUSD = cryptoData(
-    timesETHUSD,
-    `Change per hour: ${price?.DISPLAY.ETH.USD.CHANGEPCTHOUR}%`,
-    pricesETHUSD,
-    "#fb8500",
-    "#fb86001f"
-  );
-  const dataETHBRL = cryptoData(
-    timesETHBRL,
-    `Change per hour: ${price?.DISPLAY.ETH.BRL.CHANGEPCTHOUR}%`,
-    pricesETHBRL,
-    "#210ebc",
-    "#219dbc2a"
-  );
+
 
 
   // CRYPTO DATA
   const cryptoPrices = [
     {
-      image: bitcoin.src,
-      currencyName: "BITCOIN",
+      image: `https://www.cryptocompare.com/${getTopFiveUSD.data?.Data[0].CoinInfo.ImageUrl}`,
+      currencyName: getTopFiveUSD.data?.Data[0].CoinInfo.FullName,
       lastUpdate: lastUpdate,
-      priceBRL: price?.DISPLAY.BTC.BRL.PRICE,
-      priceUSD: price?.DISPLAY.BTC.USD.PRICE,
-      lowPriceBRL: price?.DISPLAY.BTC.BRL.LOW24HOUR,
-      lowPriceUSD: price?.DISPLAY.BTC.USD.LOW24HOUR,
-      highPriceBRL: price?.DISPLAY.BTC.BRL.HIGH24HOUR,
-      highPriceUSD: price?.DISPLAY.BTC.USD.HIGH24HOUR,
+      priceBRL: getTopFiveBRL.data?.Data[0].DISPLAY.BRL.PRICE,
+      priceUSD: getTopFiveUSD.data?.Data[0].DISPLAY.USD.PRICE,
+      lowPriceBRL: getTopFiveBRL.data?.Data[0].DISPLAY.BRL.LOW24HOUR,
+      lowPriceUSD: getTopFiveUSD.data?.Data[0].DISPLAY.USD.LOW24HOUR,
+      highPriceBRL: getTopFiveBRL.data?.Data[0].DISPLAY.BRL.HIGH24HOUR,
+      highPriceUSD: getTopFiveUSD.data?.Data[0].DISPLAY.USD.HIGH24HOUR,
       dataBTCBRL: dataBTCUSD,
       dataBTCUSD: dataBTCBRL,
     },
     {
-      image: ethereum.src,
-      currencyName: "ETHEREUM",
+      image: `https://www.cryptocompare.com/${getTopFiveUSD.data?.Data[1].CoinInfo.ImageUrl}`,
+      currencyName: getTopFiveUSD.data?.Data[1].CoinInfo.FullName,
       lastUpdate: lastUpdate,
-      priceBRL: price?.DISPLAY.ETH.BRL.PRICE,
-      priceUSD: price?.DISPLAY.ETH.USD.PRICE,
-      lowPriceBRL: price?.DISPLAY.ETH.BRL.LOW24HOUR,
-      lowPriceUSD: price?.DISPLAY.ETH.USD.LOW24HOUR,
-      highPriceBRL: price?.DISPLAY.ETH.BRL.HIGH24HOUR,
-      highPriceUSD: price?.DISPLAY.ETH.USD.HIGH24HOUR,
-      dataBTCBRL: dataETHUSD,
-      dataBTCUSD: dataETHBRL,
+      priceBRL: getTopFiveBRL.data?.Data[1].DISPLAY.BRL.PRICE,
+      priceUSD: getTopFiveUSD.data?.Data[1].DISPLAY.USD.PRICE,
+      lowPriceBRL: getTopFiveBRL.data?.Data[1].DISPLAY.BRL.LOW24HOUR,
+      lowPriceUSD: getTopFiveUSD.data?.Data[1].DISPLAY.USD.LOW24HOUR,
+      highPriceBRL: getTopFiveBRL.data?.Data[1].DISPLAY.BRL.HIGH24HOUR,
+      highPriceUSD: getTopFiveUSD.data?.Data[1].DISPLAY.USD.HIGH24HOUR,
+      dataBTCBRL: dataBTCUSD,
+      dataBTCUSD: dataBTCBRL,
     },
+    {
+      image: `https://www.cryptocompare.com/${getTopFiveUSD.data?.Data[2].CoinInfo.ImageUrl}`,
+      currencyName: getTopFiveUSD.data?.Data[2].CoinInfo.FullName,
+      lastUpdate: lastUpdate,
+      priceBRL: getTopFiveBRL.data?.Data[2].DISPLAY.BRL.PRICE,
+      priceUSD: getTopFiveUSD.data?.Data[2].DISPLAY.USD.PRICE,
+      lowPriceBRL: getTopFiveBRL.data?.Data[2].DISPLAY.BRL.LOW24HOUR,
+      lowPriceUSD: getTopFiveUSD.data?.Data[2].DISPLAY.USD.LOW24HOUR,
+      highPriceBRL: getTopFiveBRL.data?.Data[2].DISPLAY.BRL.HIGH24HOUR,
+      highPriceUSD: getTopFiveUSD.data?.Data[2].DISPLAY.USD.HIGH24HOUR,
+      dataBTCBRL: dataBTCUSD,
+      dataBTCUSD: dataBTCBRL,
+    },
+    {
+      image: `https://www.cryptocompare.com/${getTopFiveUSD.data?.Data[3].CoinInfo.ImageUrl}`,
+      currencyName: getTopFiveUSD.data?.Data[3].CoinInfo.FullName,
+      lastUpdate: lastUpdate,
+      priceBRL: getTopFiveBRL.data?.Data[3].DISPLAY.BRL.PRICE,
+      priceUSD: getTopFiveUSD.data?.Data[3].DISPLAY.USD.PRICE,
+      lowPriceBRL: getTopFiveBRL.data?.Data[3].DISPLAY.BRL.LOW24HOUR,
+      lowPriceUSD: getTopFiveUSD.data?.Data[3].DISPLAY.USD.LOW24HOUR,
+      highPriceBRL: getTopFiveBRL.data?.Data[3].DISPLAY.BRL.HIGH24HOUR,
+      highPriceUSD: getTopFiveUSD.data?.Data[3].DISPLAY.USD.HIGH24HOUR,
+      dataBTCBRL: dataBTCUSD,
+      dataBTCUSD: dataBTCBRL,
+    },
+    {
+      image: `https://www.cryptocompare.com/${getTopFiveUSD.data?.Data[4].CoinInfo.ImageUrl}`,
+      currencyName: getTopFiveUSD.data?.Data[4].CoinInfo.FullName,
+      lastUpdate: lastUpdate,
+      priceBRL: getTopFiveBRL.data?.Data[4].DISPLAY.BRL.PRICE,
+      priceUSD: getTopFiveUSD.data?.Data[4].DISPLAY.USD.PRICE,
+      lowPriceBRL: getTopFiveBRL.data?.Data[4].DISPLAY.BRL.LOW24HOUR,
+      lowPriceUSD: getTopFiveUSD.data?.Data[4].DISPLAY.USD.LOW24HOUR,
+      highPriceBRL: getTopFiveBRL.data?.Data[4].DISPLAY.BRL.HIGH24HOUR,
+      highPriceUSD: getTopFiveUSD.data?.Data[4].DISPLAY.USD.HIGH24HOUR,
+      dataBTCBRL: dataBTCUSD,
+      dataBTCUSD: dataBTCBRL,
+    },
+
   ];
 
   useEffect(() => {
@@ -127,6 +153,8 @@ const Aside = () => {
       });
   }, []);
 
+  console.log(getTopFiveUSD.data?.Data);
+  
 
   return (
     <>
@@ -167,6 +195,7 @@ const Aside = () => {
               );
             }
           )}
+
       </aside>
     </>
   );
