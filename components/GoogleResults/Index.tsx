@@ -57,8 +57,8 @@ const GoogleResults = ({ isOpen, onClick, text }: pos) => {
               getData?.data?.items?.map((result: any) => {
                 return (
                   <>
-                    <li>
-                      <Link href={result.formattedUrl} key={result.snippet}>
+                    <li key={result.snippet}>
+                      <Link href={result.formattedUrl} >
                         <a>
                           <div className={styles.resultText}>
                             <h3>{result.title}</h3>
