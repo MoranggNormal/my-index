@@ -3,9 +3,11 @@ import Head from 'next/head'
 import Aside from '../components/Aside/Index'
 import Header from '../components/Header/Index'
 
-import Chart from '../components/Chart/Index'
+import GoogleSearch from '../components/GoogleSearch/Index'
 
 const Home: NextPage = () => {
+
+ 
   return (
     <>
       <Head>
@@ -14,8 +16,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-     <Header></Header>
-     <Aside></Aside>
+     <Header />
+     <Aside />
+     <GoogleSearch />
     </>
   )
 }
