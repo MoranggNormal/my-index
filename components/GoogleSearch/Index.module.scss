@@ -1,0 +1,56 @@
+@import "../../styles/overrider";
+
+.googleSearchContainer {
+  width: 50em;
+  height: 15em;
+  margin-top: 10em;
+
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  form {
+    position: relative;
+    margin-top: 3em;
+    border-radius: 2em;
+    padding: 0.3em 1em;
+    border: 1px solid #e1e1e1d1;
+    transition: 0.1s;
+
+    input {
+      padding: 0.6em 8em 0.6em 1.4em;
+      cursor: default;
+      margin-left: 2em;
+    }
+
+    button{
+        position: absolute;
+        top: 20%;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+        filter: invert(1);
+
+        &:hover{
+                transform: scale(1.1);
+        }
+    }
+
+
+    &:hover, &:focus{
+        background-color: rgba(150, 150, 150, 0.158);
+        transform: scale(1.1)
+    }
+  }
+
+  .chooseSearch{
+      display: flex;
+      gap: 1em;
+
+      button{
+          cursor: pointer;
+      }
+  }
+
+  @include override;
+}

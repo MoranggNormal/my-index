@@ -1,0 +1,36 @@
+.googleResults{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    z-index: 300;
+    background-color: rgba(37, 37, 37, 0.719);
+    display: grid;
+        place-items: center;
+
+    .closeButton{
+        position: absolute;
+        z-index: 320;
+        top: 4%;
+        right: 15%;
+        cursor: pointer;
+        filter: invert(1);
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+
+}
+
+.results{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 80%;
+    z-index: 310;
+    border-radius: 0.2em;
+    background-color: rgb(231, 231, 231);
+}
