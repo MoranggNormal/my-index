@@ -3,16 +3,21 @@ import styles from "./Index.module.scss";
 
 import googleIcon from "../../assets/images/google_icon.svg";
 import wikipediaIcon from "../../assets/images/wikipedia_icon.svg";
-import React, { CSSProperties, useRef, useState } from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import GoogleResults from "../GoogleResults/Index";
 import searchIcon from "../../assets/images/5094671_find_glass_search_zoom_icon.svg";
+import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 const GoogleSearch = () => {
 
 
 
-  const [searchEngine, setSearchEngine] = useState<CSSProperties | boolean>(false);
+  const [searchEngine, setSearchEngine] = useState<CSSProperties | boolean>(true);
   const [openResults, setOpenResults] = useState(false)
+
+  const [searchWithGoogle, setSearchWithGoogle] = useState<boolean | any>(false)
+
 
   const userSearch = useRef<HTMLInputElement | any>(null);
 
@@ -20,11 +25,16 @@ const GoogleSearch = () => {
   const handleSubmit: any = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if(userSearch.current.value.length < 1) return
+    
+    setSearchWithGoogle(() => !searchWithGoogle)
+    
     setOpenResults(true)
 
-    console.log(userSearch.current.value);
+    console.log();
 
   };
+
 
   return (
     <>
@@ -68,8 +78,8 @@ const GoogleSearch = () => {
           />
         </form>
       </div>
-x
-      <GoogleResults isOpen={openResults} onClick={ () => setOpenResults(false)} />
+
+      {searchWithGoogle && <GoogleResults isOpen={openResults} onClick={() => setOpenResults(false)} text={userSearch.current.value.trim()} />}
     </>
   );
 };
