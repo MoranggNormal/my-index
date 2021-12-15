@@ -79,7 +79,7 @@ const GoogleSearch = () => {
         </form>
       </div>
 
-      {searchWithGoogle && <GoogleResults isOpen={openResults} onClick={() => setOpenResults(false)} text={userSearch.current.value.trim()} />}
+      {searchWithGoogle && searchEngine && <GoogleResults isOpen={openResults} onClick={() => setOpenResults(false)} text={userSearch.current.value.trim()} />}
     </>
   );
 };
