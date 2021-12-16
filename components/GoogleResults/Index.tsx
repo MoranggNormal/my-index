@@ -23,7 +23,6 @@ const GoogleResults = ({isOpen, onClick, text}: pos) => {
         `https://www.googleapis.com/customsearch/v1?key=AIzaSyCq6yvMY3Z-hmHsjlJfkpBOJh6i98gn3WU&cx=d03456418204f3dcf&q=${text}`
     );
 
-    console.log(getData.data?.items.map((obj: any) => obj));
 
     return (
         <>
