@@ -67,8 +67,8 @@ const GoogleResults = ({isOpen, onClick, text}: pos) => {
                                                     </div>
                                                     <div className={styles.resultImage}>
                                                         <img
-                                                            src={result.pagemap.metatags[0]["og:image"]}
-                                                            alt={result.title}
+                                                            src={result?.pagemap?.metatags[0]["og:image"]}
+                                                            alt={result?.title}
                                                         ></img>
                                                     </div>
                                                 </a>
