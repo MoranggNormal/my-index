@@ -1,74 +1,73 @@
-.button{
-    position: relative;
-    margin: 0.3em 0;
+.button {
+  position: relative;
+  margin: 0.3em 0;
 
 
-    button{
-        cursor: pointer;
-        
-        &:hover{
-            transform: scale(1.1);
-            filter: brightness(0.9);
-        }
+  button {
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: brightness(0.9);
+    }
+  }
+
+
+  .info {
+    position: absolute;
+    display: flex;
+    left: 1730%;
+    top: -100vh;
+    width: 72em;
+    transform: translate(-50%, -50%);
+    background-color: rgb(43, 43, 43);
+    padding: 0.5em 0.7em;
+    border-radius: 0.2em;
+    border-left: 4px solid #00A86B;
+    transition: all 0.3s linear;
+    gap: 1em;
+
+
+    hr {
+      margin-bottom: 1em;
     }
 
-    
-    .info{
-        position: absolute;
-        display: flex;
-        left: 1730%;
-        top: -100vh;
-        width: 72em;
-        transform: translate(-50%, -50%);
-        background-color: rgb(43, 43, 43);
-        padding: 0.5em 0.7em;
-        border-radius: 0.2em;
-        border-left: 4px solid #00A86B;
-        transition: all 0.3s linear;
-        gap: 1em;
+    p {
+      margin: 0.2em 0
+    }
 
+    small {
+      color: rgb(43, 43, 43);
+      background-color: white;
+      padding: 0.1em 0.3em;
+      border-radius: 0.2em;
+    }
 
-        hr{
-            margin-bottom: 1em;
-        }
-
-        p{
-            margin: 0.2em 0
-        }
-
-        small{
-            color: rgb(43, 43, 43);
-            background-color: white;
-            padding: 0.1em 0.3em;
-            border-radius: 0.2em;
-        }
-
-        .text{
-            display: flex;
-            flex-flow: column wrap;
-            margin-right: 3em;
-        }
-        
-        
-
-        &::before{
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -4px;
-            transform: translate(-50%, -50%);
-            width: 0.5em;
-            height: 0.6em;
-            border-radius: 9999px;
-            background-color: #00A86B;
-        }
-
+    .text {
+      display: flex;
+      flex-flow: column wrap;
+      margin-right: 3em;
     }
 
 
-   &:hover{
-       .info{
-           top: 50%;
-       }
-   }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -4px;
+      transform: translate(-50%, -50%);
+      width: 0.5em;
+      height: 0.6em;
+      border-radius: 9999px;
+      background-color: #00A86B;
+    }
+
+  }
+
+
+  &:hover {
+    .info {
+      top: 50%;
+    }
+  }
 }

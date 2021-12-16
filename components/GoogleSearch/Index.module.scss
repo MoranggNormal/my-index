@@ -8,7 +8,7 @@
   flex-flow: column wrap;
   align-items: center;
 
-  button:hover{
+  button:hover {
     transform: scale(1.1);
   }
 
@@ -26,33 +26,33 @@
       margin-left: 2em;
     }
 
-    button{
-        position: absolute;
-        top: 20%;
-        height: 32px;
-        width: 32px;
-        cursor: pointer;
-        filter: invert(1);
+    button {
+      position: absolute;
+      top: 20%;
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+      filter: invert(1);
 
-        &:hover{
-                transform: scale(1.1);
-        }
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
 
-    &:hover, &:focus{
-        background-color: rgba(150, 150, 150, 0.158);
-        transform: scale(1.1)
+    &:hover, &:focus {
+      background-color: rgba(150, 150, 150, 0.158);
+      transform: scale(1.1)
     }
   }
 
-  .chooseSearch{
-      display: flex;
-      gap: 1em;
+  .chooseSearch {
+    display: flex;
+    gap: 1em;
 
-      button{
-          cursor: pointer;
-      }
+    button {
+      cursor: pointer;
+    }
   }
 
 }

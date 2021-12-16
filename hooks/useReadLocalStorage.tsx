@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-event-listener
-import  useEventListener  from './useEventListener'
+import useEventListener from './useEventListener'
 
 type Value<T> = T | null
 

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import {Dispatch, SetStateAction, useEffect, useState} from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import useEventListener from './useEventListener'
@@ -80,7 +80,7 @@ function parseJSON<T>(value: string | null): T | undefined {
     try {
         return value === 'undefined' ? undefined : JSON.parse(value ?? '')
     } catch (error) {
-        console.log('parsing error on', { value })
+        console.log('parsing error on', {value})
         return undefined
     }
 }

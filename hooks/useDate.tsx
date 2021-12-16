@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import {useEffect, useState} from "react"
 
 
 const useDate = () => {
@@ -17,11 +17,11 @@ const useDate = () => {
 
     useEffect(() => {
         setInterval(() => {
-            setHour( () => new Date())
+            setHour(() => new Date())
         }, 1000)
     }, [])
 
-    return(
+    return (
         <>
             {hour.toLocaleTimeString()} - {weekDays[hour.getDay()]}, {hour.toLocaleDateString()}
         </>

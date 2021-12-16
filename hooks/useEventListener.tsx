@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from 'react'
+import {RefObject, useEffect, useRef} from 'react'
 
 function useEventListener<T extends HTMLElement = HTMLDivElement>(
     eventName: keyof WindowEventMap | string, // string to allow custom event

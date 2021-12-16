@@ -28,7 +28,6 @@ const Header = () => {
     const time = useDate();
 
 
-
     const modalBox = () => {
         return setModal((prevState) => !prevState);
     };
@@ -43,20 +42,20 @@ const Header = () => {
     return (
         <>
 
-        <header className={styles.headerTime}>
-            {time}
-        </header>
+            <header className={styles.headerTime}>
+                {time}
+            </header>
 
             <div className={styles.headerItems}>
                 <div className={styles.addButton}>
-                <MenuButton
-                    onClick={() => modalBox()}
-                    photo={Add.src}
-                    alt={"Add new menu item"}
-                    type={"button"}
-                >
-                    <div className={styles.itemInfo}><p>Add new item</p></div>
-                </MenuButton>
+                    <MenuButton
+                        onClick={() => modalBox()}
+                        photo={Add.src}
+                        alt={"Add new menu item"}
+                        type={"button"}
+                    >
+                        <div className={styles.itemInfo}><p>Add new item</p></div>
+                    </MenuButton>
                 </div>
 
                 <AddItemsModal Modal={modal}/>
