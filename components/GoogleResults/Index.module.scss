@@ -44,22 +44,24 @@
       li {
         margin: 2em 0;
 
-        h3,
-        small {
-          font-weight: 700;
-          color: rgb(44, 76, 218);
-
+        a{
           &:hover {
             filter: brightness(0.7);
           }
         }
 
+        h3,
+        small {
+          font-weight: 700;
+          color: rgb(44, 76, 218);
+
+       
+        }
+
         p {
           font-weight: 300;
 
-          &:hover {
-            filter: brightness(0.7);
-          }
+       
         }
 
         a {
@@ -74,9 +76,7 @@
               height: 10em;
               border-radius: 0.2em;
 
-              &:hover {
-                filter: brightness(0.7);
-              }
+            
             }
           }
         }
@@ -85,6 +85,8 @@
           color: #00a86b;
         }
       }
+
+     
     }
   }
 }
