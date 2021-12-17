@@ -1,4 +1,4 @@
-import Button from "../hoverableButton/Index";
+import Button from "../AsideButton/Index";
 
 import cryptoPattern from "../../utils/cryptoPattern";
 
