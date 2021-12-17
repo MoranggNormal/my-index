@@ -1,12 +1,11 @@
 .modal {
-  width: 25em;
-  height: 20em;
-  background-color: rgba(29, 29, 29, 0.856);
+  width: 30vw;
+  height: 80vh;
+  background-color: rgb(29, 29, 29);
   -webkit-box-shadow: 0px 0px 19px 3px #b3b3b3;
-  box-shadow: 0 0 25px 9px rgba(207, 207, 207, 0.05);
+  box-shadow: 0 0 8px 1px #00a86b;
   border-radius: 0.2em;
-  border-left: 2px solid #00a86b;
-  border-bottom: 2px solid #00a86b;
+  border: 1px solid #00a86b;
   position: fixed;
   top: -110%;
   left: 50%;
@@ -16,13 +15,35 @@
   article {
     width: 100%;
     height: 100%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    text-align: center;
 
-    form {
-      max-width: 100%;
+    .closeButton {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      border-radius: 9999px;
       display: grid;
       place-items: center;
+
+      img {
+        filter: invert(1);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: (0.7);
+        box-shadow: 0 0 8px 1px #00a86b;
+      }
+    }
+
+    form {
+      width: 80%;
+      display: grid;
+      margin-top: 4em;
 
       button {
         width: 100%;
@@ -45,13 +66,16 @@
 
 .success {
   background-color: #00a86b;
+  box-shadow: 0 0 1px 1px #00a86b;
+
   padding: 0.4em 2em;
   display: grid;
   place-items: center;
   border-radius: 0.2em;
   position: absolute;
+  z-index: 400;
   transform: translate(-50%, -50%);
   left: 50%;
   cursor: default;
-  transition: 0.1s;
+  transition: 0.8s;
 }

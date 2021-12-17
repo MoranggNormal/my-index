@@ -58,7 +58,7 @@ const Header = () => {
                     </MenuButton>
                 </div>
 
-                <AddItemsModal Modal={modal} onClick={modalBox}/>
+                <AddItemsModal Modal={modal} closeModal={modalBox}/>
 
                 <ul>
                     {getStoredItems &&

@@ -4,13 +4,10 @@
   margin: 0.4em 0;
   font-size: 1em;
   padding: 0.3em 0.6em;
-  max-width: 100%;
   transition: 0.2s;
   border: 2px solid #00a86a00;
 
-  border-left: 2px solid #00a86b;
   border-bottom: 2px solid #00a86b;
-
 
   &::placeholder {
     color: rgba(218, 218, 218, 0.85);
@@ -21,7 +18,5 @@
     border: 2px solid #00a86b;
 
     box-shadow: 0 0 8px 1px #00a86b;
-
-
   }
 }
