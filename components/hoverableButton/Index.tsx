@@ -48,7 +48,7 @@ const Button: React.FC<Props> = ({
                             <small>{lastUpdate}</small>
                         </p>
                         <p>
-                            Price: {' '}
+                            Current price: {' '}
                             <small>{priceUSD}</small>
                             {' '} - {' '}
                             <small>{priceBRL}</small>
