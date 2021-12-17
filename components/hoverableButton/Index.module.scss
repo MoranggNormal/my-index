@@ -31,6 +31,13 @@
     transition: all 0.3s linear;
     gap: 1em;
 
+    h3, p, small{
+      cursor: default;
+
+      &:hover{
+        filter: drop-shadow(0px 0px 4px #00A86B);
+      }
+    }
 
     hr {
       margin-bottom: 1em;
@@ -51,6 +58,7 @@
       display: flex;
       flex-flow: column wrap;
       margin-right: 3em;
+      
     }
 
 
@@ -76,8 +84,6 @@
 
   &:hover {
     
-  
-
     .info {
       top: 50%;
     }
