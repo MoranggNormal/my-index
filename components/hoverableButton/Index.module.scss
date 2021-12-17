@@ -5,8 +5,12 @@
 
   button {
     cursor: pointer;
+    border-radius: 9999px;
+    display: grid;
+    place-items: center;
 
     &:hover {
+      box-shadow: 0 0 8px 1px #00a86b;
       transform: scale(1.1);
       filter: brightness(0.9);
     }
@@ -62,10 +66,18 @@
       background-color: #00A86B;
     }
 
+    &:hover{
+      box-shadow: 0 0 8px 1px #00a86b;
+
+    }
+
   }
 
 
   &:hover {
+    
+  
+
     .info {
       top: 50%;
     }
