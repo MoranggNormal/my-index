@@ -2,7 +2,6 @@ import React, { MouseEventHandler, useState } from "react";
 import Image from "next/image";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Input from "../Input/Index";
-import noImage from "../../assets/images/interrogation-mark.png";
 import styles from "./Index.module.scss";
 import close from "../../assets/images/1904654_cancel_close_cross_delete_reject_icon.svg";
 
