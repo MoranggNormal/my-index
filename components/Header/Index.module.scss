@@ -69,6 +69,16 @@
         &:hover {
           transform: scale(1.1);
           filter: brightness(0.9);
+
+          &:after{
+            content: 'Remove';
+            position: absolute;
+            background-color: inherit;
+            left: 113%;
+            padding: 0.1em 0.4em;
+            border-radius: 0.2em;
+            
+          }
         }
 
         @include screen(lg) {
