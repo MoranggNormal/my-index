@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {MouseEventHandler, useState} from "react";
+import Image from 'next/image'
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Input from "../Input/Index";
 import noImage from "../../assets/images/interrogation-mark.png"
 import styles from "./Index.module.scss";
+import close from "../../assets/images/1904654_cancel_close_cross_delete_reject_icon.svg";
 
 interface item {
     photo: string;
@@ -10,7 +12,12 @@ interface item {
     text: string;
 }
 
-const AddItemsModal = ({Modal}: any) => {
+type test = {
+    onClick: MouseEventHandler<HTMLButtonElement>,
+    Modal: any
+}
+
+const AddItemsModal = ({Modal, onClick}: test, ) => {
     const [, setStoredItems] = useLocalStorage<item[]>("items", []);
 
     const [success, setSuccess] = useState(false);
@@ -45,8 +52,12 @@ const AddItemsModal = ({Modal}: any) => {
             <section
                 className={styles.modal}
                 style={Modal ? {top: "50%"} : {top: "-200%"}}
+                
             >
                 <article>
+                <button className={styles.closeButton} onClick={onClick}>
+                    <Image src={close.src} width={32} height={32}/>
+                </button>
                     <form>
                         <Input
                             value={photo}
