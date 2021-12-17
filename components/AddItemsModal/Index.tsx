@@ -83,7 +83,7 @@ const AddItemsModal = ({Modal, onClick}: test, ) => {
 
             </section>
             <div className={styles.success}
-                 style={success ? {top: '-90%'} : {top: '-400%'}}
+                 style={success ? {top: '13%'} : {top: '-100%'}}
             >Added new item!
             </div>
 
