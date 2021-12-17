@@ -9,7 +9,7 @@ import close from "../../assets/images/1904654_cancel_close_cross_delete_reject_
 interface item {
     photo: string;
     alt: string;
-    text: string;
+    url: string;
 }
 
 type test = {
@@ -22,9 +22,8 @@ const AddItemsModal = ({Modal, onClick}: test, ) => {
 
     const [success, setSuccess] = useState(false);
 
-    const [photo, setPhoto] = useState("");
     const [alt, setAlt] = useState("");
-    const [text, setText] = useState("");
+    const [url, seturl] = useState("");
 
     const addMenuItem = () => {
 
@@ -32,18 +31,17 @@ const AddItemsModal = ({Modal, onClick}: test, ) => {
         setStoredItems((prevState) => [
             ...prevState,
             {
-                photo: photo || noImage.src,
+                photo: `${url.substring(0, url.indexOf("/", 8))}/favicon.ico`,
                 alt: alt || "Undefined",
-                text: text,
+                url: url,
             },
         ]);
 
         setSuccess(prevState => !prevState)
         setTimeout(() => setSuccess(prevState => !prevState), 2000)
 
-        setPhoto("");
         setAlt("");
-        setText("");
+        seturl("");
 
     };
 
@@ -60,14 +58,6 @@ const AddItemsModal = ({Modal, onClick}: test, ) => {
                 </button>
                     <form>
                         <Input
-                            value={photo}
-                            name={photo}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
-                                setPhoto(e.target.value)
-                            }
-                            placeholder={"Type image URL"}
-                        />
-                        <Input
                             value={alt}
                             name={alt}
                             maxLength={15}
@@ -77,10 +67,10 @@ const AddItemsModal = ({Modal, onClick}: test, ) => {
                             placeholder={"Type new item Alt"}
                         />
                         <Input
-                            value={text}
-                            name={text}
+                            value={url}
+                            name={url}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
-                                setText(e.target.value)
+                                seturl(e.target.value)
                             }
                             placeholder={"Type item redirect link"}
                         />

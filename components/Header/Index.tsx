@@ -17,7 +17,7 @@ import useDate from "../../hooks/useDate";
 interface item {
     photo: string;
     alt: string;
-    text: string;
+    url: string;
 }
 
 const Header = () => {
@@ -68,7 +68,7 @@ const Header = () => {
                                     <MenuButton
                                         photo={e.photo}
                                         alt={e.alt}
-                                        link={e.text}
+                                        link={e.url}
                                         type={"button"}
                                     >
                                     </MenuButton>
