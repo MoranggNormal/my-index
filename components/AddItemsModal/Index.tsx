@@ -6,9 +6,9 @@ import styles from "./Index.module.scss";
 import close from "../../assets/images/1904654_cancel_close_cross_delete_reject_icon.svg";
 
 interface item {
-  photo: string;
+  photo: any;
   alt: string;
-  url: string;
+  url: any;
 }
 
 type test = {
@@ -24,16 +24,16 @@ const AddItemsModal = ({ Modal, closeModal }: test) => {
   const [alt, setAlt] = useState("");
   const [url, seturl] = useState("");
 
+
   const addMenuItem: any = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
     
     setStoredItems((prevState) => [
       ...prevState,
       {
-        photo: `${url.substring(0, url.indexOf("/", 8))}/favicon.ico`,
+        photo: !url.includes('https://') && `https://${url}${url.substring(0, url.indexOf("/", 8))}/favicon.ico` || `${url.substring(0, url.indexOf("/", 8))}/favicon.ico`,
         alt: alt || "Undefined",
-        url: url,
+        url: !url.includes('https://') && `https://${url}/` || url,
       },
     ]);
 
